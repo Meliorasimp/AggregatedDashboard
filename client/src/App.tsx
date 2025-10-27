@@ -1,10 +1,8 @@
 import "./styles/index.css";
+import routes from "./routes";
+import { useRoutes } from "react-router-dom";
 function App() {
-  return (
-    <>
-      <h1 className="text-blue-200">Hello world</h1>
-    </>
-  );
+  return <>{useRoutes(routes)}</>;
 }
 
 export default App;
