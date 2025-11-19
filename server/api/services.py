@@ -50,12 +50,12 @@ def get_github_user_data(username):
     return response.json()
 
 # Helper for converting city to latitude and longitude
-def get_city_coordinates(country):
+def get_city_coordinates(city):
     global OPENWEATHER_API
     global OPENWEATHER_API_KEY
 
     path = 'geo/1'
-    url = f'{OPENWEATHER_API}/{path}/direct?q={country}&limit=1&appid={OPENWEATHER_API_KEY}'
+    url = f'{OPENWEATHER_API}/{path}/direct?q={city}&limit=1&appid={OPENWEATHER_API_KEY}'
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -67,11 +67,11 @@ def get_city_coordinates(country):
 
     return coor
 
-def get_city_weather(country):
+def get_city_weather(city):
     global OPENWEATHER_API
     global OPENWEATHER_API_KEY
 
-    lat, lon = get_city_coordinates(country)
+    lat, lon = get_city_coordinates(city)
     path = 'data/2.5'
     url = f'{OPENWEATHER_API}/{path}weather?lat={lat}&lon={lon}&appid={OPENWEATHER_API_KEY}'
     response = requests.get(url)
@@ -86,6 +86,23 @@ def get_all_coin_info_api():
     url = f'{COINGECKO_API}/{endpoint}'
     response = requests.get(url)
 
+    return response.json()
+
+def get_coins_market(symbol):
+    global COINGECKO_API
+    global COINGECKO_API_KEY
+
+    headers = {
+        'x-cg-api-key': COINGECKO_API_KEY
+    }
+
+    endpoint = 'coins/markets'
+    url = f'{COINGECKO_API}/{endpoint}?vs_currency=usd&symbols={symbol}'
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        print(f'An error occured [{response.status_code}]')
+    
     return response.json()
 
 # Helper for requesting spotify access token, cause it expires every hour
