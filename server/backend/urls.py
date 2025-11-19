@@ -20,5 +20,5 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('github/', include('api.urls')),
+    path('', include('api.urls')),
 ]
