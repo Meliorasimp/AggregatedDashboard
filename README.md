@@ -1,2 +1,3 @@
 # AggregatedDashboard
-An Aggregated Dashboard that display different User API Statistics
+Yeah boi! Duo Programmers!
+
