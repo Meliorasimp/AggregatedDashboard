@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+* {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-color: #1f1c1c;
+}
+
+.gray {
+  color: #967373;
+}
+
+.dashboard-card-lp-bg {
+  background-color: #cacaca;
+}
