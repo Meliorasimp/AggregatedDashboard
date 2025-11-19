@@ -1,0 +1,13 @@
+# Python bytecode and cache files
+*.pyc
+__pycache__/
+
+# Django-specific files
+*.log
+*.pot
+local_settings.py  # Or any other file containing local, sensitive settings
+db.sqlite3         # Or any other local database file
+
+# Virtual environment files
+env/
+venv/
