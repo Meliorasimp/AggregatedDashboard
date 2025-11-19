@@ -6,7 +6,15 @@ import Coin from "../assets/coin.png";
 import Spotify from "../assets/spotify.png";
 import Rocket from "../assets/rocket.png";
 import News from "../assets/newspaper.png";
+import { type RootState } from "../store";
+import { useSelector } from "react-redux";
+import RegisterModal from "../components/RegisterModal";
 const Landingpage = () => {
+  const isRegisterModalOpen = useSelector(
+    (state: RootState) => state.interaction.isRegisterModalOpen
+  );
+
+  console.log(isRegisterModalOpen);
   const APIlist: Array<{
     name: string;
     description: string;
@@ -158,7 +166,7 @@ const Landingpage = () => {
           ))}
         </div>
       </section>
-      <section className="mt-30 h-[99vh] w-8/10 gap-4 flex flex-col">
+      <section className="mt-30 h-[140vh] w-8/10 gap-4 flex flex-col">
         <h1 className="text-5xl font-bold bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
           Powerful Features, Seamless Experience
         </h1>
@@ -166,17 +174,54 @@ const Landingpage = () => {
           Customize your data universe — all your favorite APIs in one
           intelligent dashboard.
         </p>
-        <div className="bg-linear-to-br from-purple-100 to-pink-100 mt-8 h-1/3 rounded-3xl shadow-xl border border-purple-200 p-8 hover:shadow-2xl transition-shadow duration-300 flex items-center justify-center">
-          <span className="text-3xl font-bold text-purple-700">
-            Multi-API Integration
-          </span>
+        <div className="h-[40vh] flex gap-x-8">
+          <div className="bg-linear-to-br from-purple-100 to-pink-100 mt-8 h-full rounded-3xl shadow-xl border border-purple-200 p-8 hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-center w-8/12">
+            <img src={Coin} alt="" className="w-12 h-12 rounded-2xl" />
+            <h1 className="text-2xl mt-4 font-semibold">
+              Multi API Integration
+            </h1>
+            <div className="mt-4 text-lg leading-loose">
+              Connect to multiple data sources — from Weather, Finance, News,
+              Sports, to GitHub — and visualize everything in one unified
+              dashboard. Create your own control center that keeps every insight
+              right at your fingertips.
+            </div>
+          </div>
+          <div className="bg-linear-to-br from-purple-100 to-pink-100 mt-8 h-full rounded-3xl shadow-xl border border-purple-200 p-8 hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-center w-4/12">
+            <img src={Coin} alt="" className="w-12 h-12 rounded-2xl" />
+            <h1 className="text-2xl mt-4 font-semibold">Dynamic Widget</h1>
+            <div className="mt-4 text-lg leading-loose">
+              Build your perfect dashboard with dynamic widgets that bring your
+              APIs to life.
+            </div>
+          </div>
         </div>
-        <div className="bg-linear-to-br from-blue-100 to-cyan-100 mt-4 h-1/3 rounded-3xl shadow-xl border border-blue-200 p-8 hover:shadow-2xl transition-shadow duration-300 flex items-center justify-center">
-          <span className="text-3xl font-bold text-blue-700">
-            Real-time Updates
-          </span>
+        <div className="h-[40vh] flex gap-x-8 mt-4">
+          <div className="bg-linear-to-br from-purple-100 to-pink-100 mt-8 h-full rounded-3xl shadow-xl border border-purple-200 p-8 hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-center w-4/12">
+            <img src={Coin} alt="" className="w-12 h-12 rounded-2xl" />
+            <h1 className="text-2xl mt-4 font-semibold">
+              Multi API Integration
+            </h1>
+            <div className="mt-4 text-lg leading-loose">
+              Connect to multiple data sources — from Weather, Finance, News,
+              Sports, to GitHub — and visualize everything in one unified
+              dashboard.
+            </div>
+          </div>
+          <div className="bg-linear-to-br from-purple-100 to-pink-100 mt-8 h-full rounded-3xl shadow-xl border border-purple-200 p-8 hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-center w-8/12">
+            <img src={Coin} alt="" className="w-12 h-12 rounded-2xl" />
+            <h1 className="text-2xl mt-4 font-semibold">Real-Time Updates</h1>
+            <div className="mt-4 text-lg leading-loose">
+              Stay ahead with live, auto-refreshing data from all your connected
+              APIs. Whether it’s weather conditions, stock prices, news
+              headlines, or GitHub activity — your dashboard updates instantly
+              so you never miss a moment. Watch insights change in real time,
+              without ever needing to refresh the page.
+            </div>
+          </div>
         </div>
       </section>
+      {isRegisterModalOpen && <RegisterModal />}
     </div>
   );
 };
